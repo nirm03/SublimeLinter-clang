@@ -33,7 +33,7 @@ In addition to the standard SublimeLinter settings, SublimeLinter-clang provides
 |Setting|Description|
 |:------|:----------|
 |include_dirs|A list of directories to be added to the header search paths (-I is not needed).|
-|extra_flags|a string with extra flags to pass to clang. These should be used carefully, as they may cause linting to fail.|
+|extra_flags|A string with extra flags to pass to clang. These should be used carefully, as they may cause linting to fail.|
 
 ## Contributing
 If you would like to contribute enhancements or fixes, please do the following:
