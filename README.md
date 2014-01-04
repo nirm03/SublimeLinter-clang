@@ -1,7 +1,7 @@
 SublimeLinter-clang
 =========================
 
-This linter plugin for [SublimeLinter](https://github.com/SublimeLinter/SublimeLinter3) provides an interface to [clang](http://clang.llvm.org/). It will be used with files that have the C/C++/C Improved syntax.
+This linter plugin for [SublimeLinter](https://github.com/SublimeLinter/SublimeLinter3) provides an interface to [clang](http://clang.llvm.org/). It will be used with files that have the C/C Improved/C++ syntax.
 
 ## Installation
 SublimeLinter 3 must be installed in order to use this plugin. If SublimeLinter 3 is not installed, please follow the instructions [here](http://sublimelinter.readthedocs.org/en/latest/installation.html).
@@ -34,6 +34,14 @@ In addition to the standard SublimeLinter settings, SublimeLinter-clang provides
 |:------|:----------|
 |include_dirs|A list of directories to be added to the header search paths (-I is not needed).|
 |extra_flags|A string with extra flags to pass to clang. These should be used carefully, as they may cause linting to fail.|
+
+## Troubleshooting
+C/C++ linting is not always straightforward. A few things to try when there's (almost) no linting information available:
+- Try to compile from the command line, and verify it works.
+- The linter might be missing some header files. They can be added with include_dirs.
+- Sometimes clang fails to locate the C++ standard library headers.
+Assuming the compilation works when executed via command line, try to compile with 'clang++ -v'.
+This will display all of the hidden flags clang uses. As a last resort, they can all be added as 'extra_flags.
 
 ## Contributing
 If you would like to contribute enhancements or fixes, please do the following:
