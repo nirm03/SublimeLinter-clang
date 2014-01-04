@@ -38,10 +38,10 @@ In addition to the standard SublimeLinter settings, SublimeLinter-clang provides
 ## Troubleshooting
 C/C++ linting is not always straightforward. A few things to try when there's (almost) no linting information available:
 - Try to compile from the command line, and verify it works.
-- The linter might be missing some header files. They can be added with include_dirs.
+- The linter might be missing some header files. They can be added with 'include_dirs'.
 - Sometimes clang fails to locate the C++ standard library headers.
 Assuming the compilation works when executed via command line, try to compile with 'clang++ -v'.
-This will display all of the hidden flags clang uses. As a last resort, they can all be added as 'extra_flags.
+This will display all of the hidden flags clang uses. As a last resort, they can all be added as 'extra_flags'.
 
 ## Contributing
 If you would like to contribute enhancements or fixes, please do the following:
