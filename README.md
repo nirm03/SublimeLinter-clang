@@ -8,7 +8,7 @@ SublimeLinter 3 must be installed in order to use this plugin. If SublimeLinter 
 
 ### Linter installation
 Before using this plugin, you must ensure that `clang` is installed on your system.
-- Mac OS x: clang should already bundled.
+- Mac OS x: clang should be already bundled.
 - Linux: clang can be easily installed using most package managers.
 - Windows: the situation is a little trickier, especially with C++. One way to go is to install [mingw with clang](http://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/rubenvb/). Both gcc and clang packages should be installed into the same directory.
 
