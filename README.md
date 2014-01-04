@@ -1,15 +1,18 @@
 SublimeLinter-clang
 =========================
 
-This linter plugin for [SublimeLinter](https://github.com/SublimeLinter/SublimeLinter3) provides an interface to [clang](__linter_homepage__). It will be used with files that have the C/C++/C Improved syntax.
+This linter plugin for [SublimeLinter](https://github.com/SublimeLinter/SublimeLinter3) provides an interface to [clang](http://clang.llvm.org/). It will be used with files that have the C/C++/C Improved syntax.
 
 ## Installation
-SublimeLinter 3 must be installed in order to use this plugin. If SublimeLinter 3 is not installed, please follow the instructions [here](https://github.com/SublimeLinter/SublimeLinter.github.io/wiki/Installation).
+SublimeLinter 3 must be installed in order to use this plugin. If SublimeLinter 3 is not installed, please follow the instructions [here](http://sublimelinter.readthedocs.org/en/latest/installation.html).
 
 ### Linter installation
-Before using this plugin, you must ensure that `clang` is installed on your system. clang is already bundled on Mac OS X. On Linux, it can be easily installed using most package managers. 
+Before using this plugin, you must ensure that `clang` is installed on your system.
+- Mac OS x: clang should already bundled.
+- Linux: clang can be easily installed using most package managers.
+- Windows: the situation is a little trickier, especially with C++. One way to go is to install [mingw with clang](http://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/rubenvb/). Both gcc and clang packages should be installed into the same directory.
 
-Once `clang` is installed, you must ensure it is in your system PATH so that SublimeLinter can find it. This may not be as straightforward as you think, so please read [How linter executables are located](https://github.com/SublimeLinter/SublimeLinter.github.io/wiki/Usage#how-linter-executables-are-located) in the documentation.
+Once `clang` is installed, you must ensure it is in your system PATH so that SublimeLinter can find it. This may not be as straightforward as you think, so please read [How linter executables are located](http://sublimelinter.readthedocs.org/en/latest/usage.html#how-linter-executables-are-located) in the documentation.
 
 Once you have installed `clang` you can proceed to install the SublimeLinter-clang plugin if it is not yet installed.
 
@@ -23,14 +26,14 @@ To install via Package Control, do the following:
 1. When the plugin list appears, type `clang`. Among the entries you should see `SublimeLinter-clang`. If that entry is not highlighted, use the keyboard or mouse to select it.
 
 ## Settings
-For general information on how SublimeLinter works with settings, please see [Settings](https://github.com/SublimeLinter/SublimeLinter.github.io/wiki/Settings). For information on generic linter settings, please see [Linter Settings](https://github.com/SublimeLinter/SublimeLinter.github.io/wiki/Linter-Settings).
+For general information on how SublimeLinter works with settings, please see [Settings](http://sublimelinter.readthedocs.org/en/latest/settings.html). For information on generic linter settings, please see [Linter Settings](http://sublimelinter.readthedocs.org/en/latest/linter_settings.html).
 
-In addition to the standard SublimeLinter settings, SublimeLinter-clang provides its own settings. Those marked as “Inline Setting” or “Inline Override” may also be [used inline](https://github.com/SublimeLinter/SublimeLinter.github.io/wiki/Settings#inline-settings).
+In addition to the standard SublimeLinter settings, SublimeLinter-clang provides its own settings.
 
-|Setting|Description|Inline Setting|Inline Override|
-|:------|:----------|:------------:|:-------------:|
-|include_dirs|A list of directories to be added to the header search paths (-I is not needed).| | |
-|extra_flags|a string with extra flags to pass to clang. These should be used carefully, as they can potentialy break the linter| | |
+|Setting|Description|
+|:------|:----------|
+|include_dirs|A list of directories to be added to the header search paths (-I is not needed).|
+|extra_flags|a string with extra flags to pass to clang. These should be used carefully, as they may cause linting to fail.|
 
 ## Contributing
 If you would like to contribute enhancements or fixes, please do the following:
@@ -41,7 +44,7 @@ If you would like to contribute enhancements or fixes, please do the following:
 1. Make a pull request.
 1. Be patient.  ;-)
 
-Please note that modications should follow these coding guidelines:
+Please note that modifications should follow these coding guidelines:
 
 - Indent is 4 spaces.
 - Code should pass flake8 and pep257 linters.

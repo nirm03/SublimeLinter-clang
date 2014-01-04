@@ -10,7 +10,8 @@
 
 """This module exports the Clang plugin class."""
 
-from SublimeLinter.lint import Linter, util, persist
+import shlex
+from SublimeLinter.lint import Linter, persist
 
 
 class Clang(Linter):
@@ -26,19 +27,11 @@ class Clang(Linter):
         r'(?:(?P<error>(error|fatal error))|(?P<warning>warning)): '
         r'(?P<message>.+)'
     )
-    multiline = False
 
-    line_col_base = (1, 1)
-    error_stream = util.STREAM_BOTH
-    selectors = {}
-    word_re = None
     defaults = {
         'include_dirs': [],
         'extra_flags': ""
     }
-    inline_settings = None
-    inline_overrides = None
-    comment_re = None
 
     base_cmd = (
         'clang -cc1 -fsyntax-only '
@@ -51,17 +44,20 @@ class Clang(Linter):
 
         We override this method, so we can add extra flags and include paths
         based on the 'include_dirs' and 'extra_flags' settings.
+
         """
+
         result = self.base_cmd
 
         if persist.get_syntax(self.view) == 'c++':
             result += ' -x c++ '
 
         settings = self.get_view_settings()
-        result += settings.get('extra_flags')
+        result += settings.get('extra_flags', '')
 
-        include_dirs = settings.get('include_dirs')
+        include_dirs = settings.get('include_dirs', [])
+
         if include_dirs:
-            result += ' -I ' + ' -I '.join(settings.get('include_dirs'))
+            result += ' '.join([' -I ' + shlex.quote(include) for include in include_dirs])
 
         return result
