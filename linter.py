@@ -34,7 +34,7 @@ class Clang(Linter):
     }
 
     base_cmd = (
-        'clang -cc1 -fsyntax-only '
+        'clang -fsyntax-only '
         '-fno-caret-diagnostics -fcxx-exceptions -Wall '
     )
 
@@ -60,4 +60,4 @@ class Clang(Linter):
         if include_dirs:
             result += ' '.join([' -I ' + shlex.quote(include) for include in include_dirs])
 
-        return result
+        return result + ' -'# read from standard input
