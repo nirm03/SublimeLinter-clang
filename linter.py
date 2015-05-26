@@ -68,7 +68,9 @@ class Clang(Linter):
 
         result = self.base_cmd
 
-        if persist.get_syntax(self.view) == 'c++':
+        if persist.get_syntax(self.view) in ['c', 'c improved']:
+            result += ' -x c '
+        elif persist.get_syntax(self.view) in ['c++']:
             result += ' -x c++ '
 
         settings = self.get_view_settings()
@@ -79,4 +81,4 @@ class Clang(Linter):
         if include_dirs:
             result += apply_template( ' '.join([' -I ' + shlex.quote(include) for include in include_dirs]) )
 
-        return result + ' -'# read from standard input
+        return result + ' -'
