@@ -37,7 +37,7 @@ class Clang(Linter):
 
     """Provides an interface to clang."""
 
-    syntax = ('c', 'c improved', 'c++')
+    syntax = ('c', 'c improved', 'c++', 'c++11')
     executable = 'clang'
 
     # We are missing out on some errors by ignoring multiline messages.
