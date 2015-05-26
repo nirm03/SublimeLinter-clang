@@ -35,6 +35,23 @@ In addition to the standard SublimeLinter settings, SublimeLinter-clang provides
 |include_dirs|A list of directories to be added to the header search paths (-I is not needed).|
 |extra_flags|A string with extra flags to pass to clang. These should be used carefully, as they may cause linting to fail.|
 
+In project-specific settings, '$project_folder' or '${project_folder}' can be used to specify relative path.
+```
+"SublimeLinter":
+{
+    "linters":
+    {
+        "clang": {
+            "extra_flags": "-Wall -I${project_folder}/foo",
+            "include_dirs": [
+                "${project_folder}/3rdparty/bar/include",
+                "${project_folder}/3rdparty/baz"
+            ]
+        }
+    }
+},
+```
+
 ## Troubleshooting
 C/C++ linting is not always straightforward. A few things to try when there's (almost) no linting information available:
 - Try to compile from the command line, and verify it works.
