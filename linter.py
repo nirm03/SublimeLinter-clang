@@ -40,12 +40,14 @@ class Clang(Linter):
     syntax = ('c', 'c improved', 'c++', 'c++11')
     executable = 'clang'
 
-    # We are missing out on some errors by ignoring multiline messages.
-    regex = (
-        r'^<stdin>:(?P<line>\d+):(?P<col>\d+): '
-        r'(?:(?P<error>(error|fatal error))|(?P<warning>warning)): '
-        r'(?P<message>.+)'
+    regex = (r'<stdin>:(?P<line>\d+):'
+        '(?:(?P<col>\d*): )?'# column number, colon and space are only applicable for single line messages
+        # optional newline followed by error/warning/note or error backtrace
+        '(?:\r?\n?.*(?P<error>error)|(?P<warning>warning|note)|\r?\n.*)*'
+        ': (?P<message>.+)'# match the remaining content of the current line for output
     )
+
+    multiline = True
 
     defaults = {
         'include_dirs': [],
