@@ -54,7 +54,7 @@ class Clang(Linter):
 
     base_cmd = (
         'clang -fsyntax-only '
-        '-fno-caret-diagnostics -fcxx-exceptions -Wall '
+        '-fno-caret-diagnostics -Wall '
     )
 
     def cmd(self):
@@ -70,8 +70,8 @@ class Clang(Linter):
 
         if persist.get_syntax(self.view) in ['c', 'c improved']:
             result += ' -x c '
-        elif persist.get_syntax(self.view) in ['c++']:
-            result += ' -x c++ '
+        elif persist.get_syntax(self.view) in ['c++', 'c++11']:
+            result += ' -x c++ -fcxx-exceptions '
 
         settings = self.get_view_settings()
         result += apply_template( settings.get('extra_flags', '') )
