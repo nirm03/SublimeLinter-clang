@@ -71,7 +71,7 @@ class Clang(Linter):
         if persist.get_syntax(self.view) in ['c', 'c improved']:
             result += ' -x c '
         elif persist.get_syntax(self.view) in ['c++', 'c++11']:
-            result += ' -x c++ -fcxx-exceptions '
+            result += ' -x c++ '
 
         settings = self.get_view_settings()
         result += apply_template( settings.get('extra_flags', '') )
