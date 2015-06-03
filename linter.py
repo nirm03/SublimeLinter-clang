@@ -41,10 +41,12 @@ class Clang(Linter):
     executable = 'clang'
 
     regex = (r'<stdin>:(?P<line>\d+):'
-        '(?:(?P<col>\d*): )?'# column number, colon and space are only applicable for single line messages
-        # optional newline followed by error/warning/note or error backtrace
-        '(?:\r?\n?.*(?P<error>error)|(?P<warning>warning|note)|\r?\n.*)*'
-        ': (?P<message>.+)'# match the remaining content of the current line for output
+        r'((?P<col>\d*): )?'# column number, colon and space are only applicable for single line messages
+        # several lines of anything followed by
+        # either error/warning/note or newline (= irrelevant backtrace content)
+        # (lazy quantifiers so we don’t skip what we seek)
+        r'(.*?((?P<error>error)|(?P<warning>warning|note)|\r?\n))+?'
+        r': (?P<message>.+)'# match the remaining content of the current line for output
     )
 
     multiline = True
