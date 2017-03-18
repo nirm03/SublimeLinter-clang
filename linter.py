@@ -22,7 +22,10 @@ def get_project_folder():
     if proj_file:
         return os.path.dirname(proj_file)
     # Use current file's folder when no project file is opened.
-    return os.path.dirname( sublime.active_window().active_view().file_name() )
+    proj_file = sublime.active_window().active_view().file_name()
+    if proj_file:
+        return os.path.dirname(proj_file)
+    return '.'
 
 
 def apply_template(s):
