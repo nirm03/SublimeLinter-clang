@@ -56,9 +56,7 @@ class Clang(Linter):
 
     defaults = {
         'include_dirs': [],
-        'extra_flags': "",
-        'extra_cflags': "",
-        'extra_cxxflags': ""
+        'extra_flags': ""
     }
 
     base_cmd = (
@@ -76,13 +74,13 @@ class Clang(Linter):
         """
 
         result = self.base_cmd
-        settings = self.get_view_settings()
 
         if persist.get_syntax(self.view) in ['c', 'c improved']:
-            result += ' -x c ' + settings.get('extra_cflags', '') + ' '
+            result += ' -x c '
         elif persist.get_syntax(self.view) in ['c++', 'c++11']:
-            result += ' -x c++ ' + settings.get('extra_cxxflags', '') + ' '
+            result += ' -x c++ '
 
+        settings = self.get_view_settings()
         result += apply_template( settings.get('extra_flags', '') )
 
         include_dirs = settings.get('include_dirs', [])
